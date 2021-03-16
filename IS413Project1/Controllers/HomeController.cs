@@ -12,14 +12,19 @@ namespace IS413Project1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ITempleRepository _repository;
+        public HomeController(ILogger<HomeController> logger, ITempleRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
+            if (ModelState.IsValid)
+            {
+                return View(_repository.Appointments);
+            }
             return View();
         }
 
@@ -33,5 +38,6 @@ namespace IS413Project1.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
