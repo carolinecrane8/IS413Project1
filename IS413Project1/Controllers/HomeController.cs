@@ -11,21 +11,49 @@ namespace IS413Project1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private ITempleRepository _repository;
-        public HomeController(ILogger<HomeController> logger, ITempleRepository repository)
+        //private readonly ILogger<HomeController> _logger;
+        //private ITempleRepository _repository;
+
+        private TempleDbContext context { get; set; }
+        public HomeController(TempleDbContext con)
         {
-            _logger = logger;
-            _repository = repository;
+            context = con;
         }
 
         public IActionResult Index()
         {
+            return View();
+        }
+        public IActionResult AvailAppointments()
+        {
+            return View(context.Appointments);
+        }
+
+        public IActionResult AllAppointments()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult SignupForm()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SignupForm(Signup s, Appointment a)
+        {
+            //That required information is entered and validation model works
             if (ModelState.IsValid)
             {
-                return View(_repository.Appointments);
+                context.Signups.Add(s);
+                Response.Redirect("AllAppointments");
+                return View();
             }
-            return View();
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()
