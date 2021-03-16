@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IS413Project1.Migrations
 {
     [DbContext(typeof(TempleDbContext))]
-    [Migration("20210316164640_INitial")]
-    partial class INitial
+    [Migration("20210316211127_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,9 @@ namespace IS413Project1.Migrations
                     b.Property<string>("BeginTime")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("Booked")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Date")
                         .IsRequired()
@@ -49,7 +52,15 @@ namespace IS413Project1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("BeginTime")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EndTime")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

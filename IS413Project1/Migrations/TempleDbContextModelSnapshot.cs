@@ -25,6 +25,9 @@ namespace IS413Project1.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("Booked")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Date")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -47,7 +50,15 @@ namespace IS413Project1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("BeginTime")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EndTime")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

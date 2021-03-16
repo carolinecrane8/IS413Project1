@@ -28,7 +28,16 @@ namespace IS413Project1.Models
                         Date = "Sunday, March 14",
                         BeginTime = "8:00 AM",
                         EndTime = "9:00 AM",
-                        Description = "Full Tour: Walk the perimeter of the site, sturdy shoes recommended."
+                        Description = "Full Tour: Walk the perimeter of the site, sturdy shoes recommended.",
+                        Booked = false,
+                    },
+                    new Appointment
+                    {
+                        Date = "Sunday, March 14",
+                        BeginTime = "8:00 AM",
+                        EndTime = "9:00 AM",
+                        Description = "Full Tour: Walk the perimeter of the site, sturdy shoes recommended.",
+                        Booked = true,
                     }
 
 

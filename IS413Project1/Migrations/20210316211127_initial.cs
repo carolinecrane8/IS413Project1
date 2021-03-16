@@ -2,7 +2,7 @@
 
 namespace IS413Project1.Migrations
 {
-    public partial class INitial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,8 @@ namespace IS413Project1.Migrations
                     Date = table.Column<string>(type: "TEXT", nullable: false),
                     BeginTime = table.Column<string>(type: "TEXT", nullable: false),
                     EndTime = table.Column<string>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true)
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Booked = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,7 +32,9 @@ namespace IS413Project1.Migrations
                     GroupName = table.Column<string>(type: "TEXT", nullable: false),
                     GroupSize = table.Column<int>(type: "INTEGER", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
-                    Phone = table.Column<string>(type: "TEXT", nullable: true)
+                    Phone = table.Column<string>(type: "TEXT", nullable: true),
+                    BeginTime = table.Column<string>(type: "TEXT", nullable: false),
+                    EndTime = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

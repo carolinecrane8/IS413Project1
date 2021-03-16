@@ -1,4 +1,5 @@
 ﻿using IS413Project1.Models;
+using IS413Project1.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -26,7 +27,15 @@ namespace IS413Project1.Controllers
         }
         public IActionResult AvailAppointments()
         {
-            return View(context.Appointments);
+            //Should be able to query and figure out where appointments == booked =true
+            //This is what I did before adding view model
+            //return View(context.Appointments);
+            return View(new AppointmentsListViewModel
+            {
+               Booked = context.Appointments
+                .Where(x => x.Booked == false)
+            }
+              );
         }
 
         public IActionResult AllAppointments()
