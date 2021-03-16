@@ -31,7 +31,6 @@ namespace IS413Project1
                 options.UseSqlite(Configuration["ConnectionStrings:TempleConnection"]);
             });
 
-            services.AddScoped<ITempleRepository, EFTempleRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
