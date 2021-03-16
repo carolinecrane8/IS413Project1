@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,6 +23,7 @@ namespace IS413Project1.Models
         [RegularExpression(@"^\d{3}-\d{3}-\d{4}$", ErrorMessage = "Entered phone format is not valid. Correct format xxx-xxx-xxxx")]
         public string? Phone { get; set; }
         [Required]
+        [Column(TypeName = "smalldatetime")]
         public DateTime BeginTime { get; set; }
         [Required]
         public DateTime EndTime { get; set; }

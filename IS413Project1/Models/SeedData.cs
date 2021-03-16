@@ -27,7 +27,7 @@ namespace IS413Project1.Models
                     {
                         AppointmentId = 1,
                         Date = "Sunday, March 14",
-                        BeginTime = "8:00 AM",
+                        BeginTime = "2021-03-21 8:00:00",
                         EndTime = "9:00 AM",
                         Description = "Full Tour: Walk the perimeter of the site, sturdy shoes recommended.",
                         Booked = false,
@@ -36,7 +36,7 @@ namespace IS413Project1.Models
                     {
                         AppointmentId = 2,
                         Date = "Sunday, March 14",
-                        BeginTime = "8:00 AM",
+                        BeginTime = "2021-03-21 9:00:00",
                         EndTime = "9:00 AM",
                         Description = "Full Tour: Walk the perimeter of the site, sturdy shoes recommended.",
                         Booked = true,
