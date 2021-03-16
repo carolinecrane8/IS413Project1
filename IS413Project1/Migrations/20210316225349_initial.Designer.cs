@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IS413Project1.Migrations
 {
     [DbContext(typeof(TempleDbContext))]
-    [Migration("20210316211127_initial")]
+    [Migration("20210316225349_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

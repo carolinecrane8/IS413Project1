@@ -8,7 +8,6 @@ namespace IS413Project1.Models
 {
     public class Signup
     {
-        [Key]
         [Required]
         public int SignupId { get; set; }
         
@@ -21,13 +20,11 @@ namespace IS413Project1.Models
         public string Email { get; set; }
         [Phone]
         [RegularExpression(@"^\d{3}-\d{3}-\d{4}$", ErrorMessage = "Entered phone format is not valid. Correct format xxx-xxx-xxxx")]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
         [Required]
-        public string Date { get; }
+        public DateTime BeginTime { get; set; }
         [Required]
-        public string BeginTime { get; set; }
-        [Required]
-        public string EndTime { get; set; }
+        public DateTime EndTime { get; set; }
 
 
     }

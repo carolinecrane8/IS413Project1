@@ -15,6 +15,10 @@ namespace IS413Project1.Controllers
         //private readonly ILogger<HomeController> _logger;
         //private ITempleRepository _repository;
 
+        //These will help to join the tables to output all in info
+        List<Appointment> appointmentData = new List<Appointment>();
+        List<Signup> signupData = new List<Signup>();
+
         private TempleDbContext context { get; set; }
         public HomeController(TempleDbContext con)
         {
@@ -40,9 +44,29 @@ namespace IS413Project1.Controllers
 
         public IActionResult AllAppointments()
         {
-            return View();
+            insertDummyData();
+            var JoinDataViewModel = from a in appointmentData
+                                    join s in signupData on a.AppointmentId equals s.SignupId into sa
+                                    from s in sa.DefaultIfEmpty()
+                                    select new JoinDataViewModel { appointmentVm = a, signupVm = s };
+            return View("AllAppointments", JoinDataViewModel);
         }
-
+        public void insertDummyData()
+        {
+            signupData.Add(new Signup
+            {
+                SignupId = 1,
+                GroupName = "Jamie's",
+                GroupSize = 4,
+            });
+            appointmentData.Add(new Appointment
+            {
+                AppointmentId = 1,
+                BeginTime = "8:00AM",
+                EndTime = "10",
+                Description = "sdigjsogn"
+            });
+        }
         [HttpGet]
         public IActionResult SignupForm()
         {

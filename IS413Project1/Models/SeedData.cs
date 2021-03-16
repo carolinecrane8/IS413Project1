@@ -25,6 +25,7 @@ namespace IS413Project1.Models
 
                     new Appointment
                     {
+                        AppointmentId = 1,
                         Date = "Sunday, March 14",
                         BeginTime = "8:00 AM",
                         EndTime = "9:00 AM",
@@ -33,6 +34,7 @@ namespace IS413Project1.Models
                     },
                     new Appointment
                     {
+                        AppointmentId = 2,
                         Date = "Sunday, March 14",
                         BeginTime = "8:00 AM",
                         EndTime = "9:00 AM",
