@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IS413Project1.Migrations
 {
     [DbContext(typeof(TempleDbContext))]
-    [Migration("20210316231543_initial")]
+    [Migration("20210316234901_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,21 +26,16 @@ namespace IS413Project1.Migrations
 
                     b.Property<string>("BeginTime")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("smalldatetime");
 
                     b.Property<bool>("Booked")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("EndTime")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Duration")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("AppointmentId");
 
@@ -58,9 +53,6 @@ namespace IS413Project1.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("EndTime")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("GroupName")

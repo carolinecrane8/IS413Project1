@@ -58,12 +58,13 @@ namespace IS413Project1.Controllers
                 SignupId = 1,
                 GroupName = "Jamie's",
                 GroupSize = 4,
+
             });
             appointmentData.Add(new Appointment
             {
                 AppointmentId = 1,
-                BeginTime = "8:00AM",
-                EndTime = "10",
+                BeginTime = "2021-03-21 9:00:00",
+                Duration = 1,
                 Description = "sdigjsogn"
             });
         }

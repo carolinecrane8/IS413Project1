@@ -13,9 +13,8 @@ namespace IS413Project1.Migrations
                 {
                     AppointmentId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Date = table.Column<string>(type: "TEXT", nullable: false),
-                    BeginTime = table.Column<string>(type: "TEXT", nullable: false),
-                    EndTime = table.Column<string>(type: "TEXT", nullable: false),
+                    BeginTime = table.Column<string>(type: "smalldatetime", nullable: false),
+                    Duration = table.Column<int>(type: "INTEGER", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     Booked = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
@@ -34,8 +33,7 @@ namespace IS413Project1.Migrations
                     GroupSize = table.Column<int>(type: "INTEGER", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     Phone = table.Column<string>(type: "TEXT", nullable: true),
-                    BeginTime = table.Column<DateTime>(type: "smalldatetime", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    BeginTime = table.Column<DateTime>(type: "smalldatetime", nullable: false)
                 },
                 constraints: table =>
                 {
