@@ -26,13 +26,11 @@ namespace IS413Project1.Migrations
                         .IsRequired()
                         .HasColumnType("smalldatetime");
 
-                    b.Property<bool>("Booked")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Duration")
+                    b.Property<int?>("SignupId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("AppointmentId");

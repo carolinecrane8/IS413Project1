@@ -29,6 +29,9 @@ namespace IS413Project1.Controllers
         {
             return View();
         }
+
+
+        [HttpGet]
         public IActionResult AvailAppointments()
         {
             //Should be able to query and figure out where appointments == booked =true
@@ -36,36 +39,50 @@ namespace IS413Project1.Controllers
             //return View(context.Appointments);
             return View(new AppointmentsListViewModel
             {
-               Booked = context.Appointments
-                .Where(x => x.Booked == false)
+               Available = context.Appointments
+                .Where(x => x.SignupId == null)
             }
               );
+        }
+
+        [HttpPost]
+        public IActionResult AvailAppointments(int appointmentId)
+        {
+            Appointment appointment = context.Appointments.Where(a => a.AppointmentId == appointmentId).FirstOrDefault();
+            //Should be able to query and figure out where appointments == booked =true
+            //This is what I did before adding view model
+            ViewBag.Appointment = appointment;
+            //return View(context.Appointments);
+            return View("SignupForm");
+
         }
 
         public IActionResult AllAppointments()
         {
             insertDummyData();
-            var JoinDataViewModel = from a in appointmentData
-                                    join s in signupData on a.AppointmentId equals s.SignupId into sa
-                                    from s in sa.DefaultIfEmpty()
-                                    select new JoinDataViewModel { appointmentVm = a, signupVm = s };
-            return View("AllAppointments", JoinDataViewModel);
+                var JoinDataViewModel = from a in appointmentData
+                join s in signupData on a.AppointmentId equals s.SignupId into sa
+                from s in sa.DefaultIfEmpty()
+                select new JoinDataViewModel { appointmentVm = a, signupVm = s };
+                return View("AllAppointments", JoinDataViewModel);
+ 
         }
+
         public void insertDummyData()
         {
             signupData.Add(new Signup
             {
-                SignupId = 1,
-                GroupName = "Jamie's",
-                GroupSize = 4,
+               // SignupId = 1,
+                //GroupName = "Jamie's",
+                //GroupSize = 4,
 
             });
             appointmentData.Add(new Appointment
             {
-                AppointmentId = 1,
-                BeginTime = "2021-03-21 9:00:00",
-                Duration = 1,
-                Description = "sdigjsogn"
+               // AppointmentId = 1,
+                //BeginTime = "2021-03-21 9:00:00",
+                //Duration = 1,
+                //Description = "sdigjsogn"
             });
         }
         [HttpGet]

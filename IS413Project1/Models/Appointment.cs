@@ -13,15 +13,14 @@ namespace IS413Project1.Models
         [Required]
         public int AppointmentId { get; set; }
 
+        public int? SignupId { get; set; }
+
         [Required]
         [Column(TypeName = "smalldatetime")]
         public string BeginTime { get; set; }
 
         [Required]
-        public int Duration { get; set; }
         public string Description { get; set; }
-        [Required]
-        public bool Booked { get; set; }
 
 
 
