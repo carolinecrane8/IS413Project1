@@ -6,17 +6,19 @@
 @model AppointmentsListViewModel
 <!--SignUpPage: This will display the available times. Once they select a time they are routed to a form that has the date info set-->
 <!--This is an example of you can display all of the seed data-->
-
-@foreach (var x in Model.Available)
-{
-    <div class="card card-outline-primary m-1 p-1">
-        <div class=“bg-faded p-1">
-            <form method="post" asp-action="AvailAppointments">
-                <input type="hidden" name="appointmentId" value="@x.AppointmentId" />
-                <h3>@x.BeginTime</h3>
-                <p>@x.Description</p>
-                <button class="btn-primary" type="submit">Book Appointment</button>
-            </form>
+<div class="card-deck" style="align-content: center;">
+    @foreach (var x in Model.Available)
+    {
+        <div class="card" style="max-width: 30rem;">
+            <img src="~/img/laytonTemple.png" class="card-img-top" alt="..." />
+            <div class=“bg-faded p-1">
+                <form method="post" asp-action="AvailAppointments">
+                    <input type="hidden" name="appointmentId" value="@x.AppointmentId" />
+                    <h3>@x.BeginTime</h3>
+                    <p>@x.Description</p>
+                    <button class="btn-primary" type="submit">Book Appointment</button>
+                </form>
+            </div>
         </div>
-    </div>
-}
+    }
+</div>
