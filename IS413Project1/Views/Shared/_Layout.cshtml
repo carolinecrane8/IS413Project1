@@ -1,27 +1,41 @@
-﻿
- 
+﻿<!--_Layout page-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - IS413Project1</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/swatchbootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/group.css" rel="stylesheet" />
+    <link rel="icon" type="image/jpg" href="~/favicon.jpg" />
 </head>
 <body>
     <header>
-        <nav></nav>
-        <!--This need to be a nav bar here-->
+        <!--This is our nav bar here-->
+        <div class="bg-primary text-white p-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col navbar-brand text-left">LAYTON TEMPLE TOURS</div>
+                    <div class="col-6 text-right">
+                        <!--<vc:appt-summary />-->
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <!--Menu-->
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-2">
+            Menu
+            <!--<vc:navigation-menu />-->
+        </div>
+        <div class="col-9" role="main">
             @RenderBody()
-        </main>
+        </div>
     </div>
-
-    <footer class="border-top footer text-muted">
+    <!--Footer-->
+    <footer class="border-top footer text-muted" style="margin-bottom:0">
         <div class="container">
             &copy; 2021 - IS413Project1 - <a asp-area="" asp-controller="Home" asp-action="Privacy"></a>
         </div>
@@ -32,3 +46,4 @@
 
 </body>
 </html>
+
