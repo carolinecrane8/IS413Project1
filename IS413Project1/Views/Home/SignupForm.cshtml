@@ -3,29 +3,27 @@
 *@
 @{
     ViewBag.title = "Enter appointment information";
-    //ViewBag.Time = Model.BeginTime;
+    ViewBag.Time = "2021 - 03 - 21 8:00:00";
 }
 
 @model IS413Project1.Models.Signup
-
-    <! -- The form created for the user to enter an appointment-->
+    <! -- The form created for the user to enter a restaurant-->
 <form asp-action="SignUpForm" method="post">
-    <! -- area to input group name -->
     <div>
         <label asp-for="GroupName">Name of Group</label>
         <input asp-for="GroupName" />
     </div>
-    <! -- area to input group size -->
+
     <div>
         <label asp-for="GroupSize">Size of Group</label>
         <input asp-for="GroupSize" />
     </div>
-    <! -- area to input email address -->
+
     <div>
         <label asp-for="Email">Email Address</label>
         <input asp-for="Email" />
     </div>
-    <! -- area to input phone number -->
+
     <div>
         <label asp-for="Phone">Phone Number</label>
         <input asp-for="Phone" />
@@ -33,7 +31,7 @@
 
     <div>
         <label asp-for="BeginTime">Time</label>
-        <input asp-for="BeginTime" value="BeginTime"> //fix idiot 
+        <input asp-for="BeginTime" value="@ViewBag.Time"> //fix idiot
     </div>
 
     <! -- shows the errors -->
