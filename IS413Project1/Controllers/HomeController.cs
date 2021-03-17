@@ -39,7 +39,7 @@ namespace IS413Project1.Controllers
             //return View(context.Appointments);
             return View(new AppointmentsListViewModel
             {
-               Booked = context.Appointments
+               Available = context.Appointments
                 .Where(x => x.SignupId == null)
             }
               );

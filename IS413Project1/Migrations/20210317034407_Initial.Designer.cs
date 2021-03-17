@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IS413Project1.Migrations
 {
     [DbContext(typeof(TempleDbContext))]
-    [Migration("20210317030618_initial")]
-    partial class initial
+    [Migration("20210317034407_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,14 +28,9 @@ namespace IS413Project1.Migrations
                         .IsRequired()
                         .HasColumnType("smalldatetime");
 
-                    b.Property<bool>("Booked")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Duration")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("SignupId")
                         .HasColumnType("INTEGER");

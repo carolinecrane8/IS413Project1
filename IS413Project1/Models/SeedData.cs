@@ -27,17 +27,14 @@ namespace IS413Project1.Models
                     {
                         AppointmentId = 1,
                         BeginTime = "2021-03-21 8:00:00",
-                        Duration = 5,
                         Description = "Full Tour: Walk the perimeter of the site, sturdy shoes recommended.",
-                        Booked = false,
+
                     },
                     new Appointment
                     {
                         AppointmentId = 2,
                         BeginTime = "2021-03-21 8:00:00",
-                        Duration = 4,
                         Description = "Full Tour: Walk the perimeter of the site, sturdy shoes recommended.",
-                        Booked = true,
                     }
 
 

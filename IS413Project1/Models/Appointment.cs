@@ -20,10 +20,7 @@ namespace IS413Project1.Models
         public string BeginTime { get; set; }
 
         [Required]
-        public int Duration { get; set; }
         public string Description { get; set; }
-        [Required]
-        public bool Booked { get; set; }
 
 
 
