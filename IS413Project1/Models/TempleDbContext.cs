@@ -12,7 +12,6 @@ namespace IS413Project1.Models
         {
 
         }
-
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Signup> Signups { get; set; }
     }
