@@ -22,11 +22,11 @@ namespace IS413Project1.Models
         [Phone]
         [RegularExpression(@"^\d{3}-\d{3}-\d{4}$", ErrorMessage = "Entered phone format is not valid. Correct format xxx-xxx-xxxx")]
         public string? Phone { get; set; }
+
         [Required]
         [Column(TypeName = "smalldatetime")]
         public DateTime BeginTime { get; set; }
-        [Required]
-        public DateTime EndTime { get; set; }
+ 
 
 
     }
