@@ -49,6 +49,7 @@ namespace IS413Project1.Controllers
         public IActionResult AvailAppointments(int appointmentId)
         {
             Appointment appointment = context.Appointments.Where(a => a.AppointmentId == appointmentId).FirstOrDefault();
+        
             //Should be able to query and figure out where appointments == booked =true
             //This is what I did before adding view model
             ViewBag.Appointment = appointment;
