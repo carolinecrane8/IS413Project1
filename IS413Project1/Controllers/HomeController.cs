@@ -61,37 +61,36 @@ namespace IS413Project1.Controllers
 
         public IActionResult AllAppointments()
         {
+            //IEnumerable<> 
+            //appointmentData = context.Appointments.Where();
+            //var whatever = context.Appointments
             insertDummyData();
             var JoinDataViewModel = from a in appointmentData
-            join s in signupData on a.AppointmentId equals s.SignupId into sa
-            from s in sa.DefaultIfEmpty()
-            select new JoinDataViewModel { appointmentVm = a, signupVm = s };
+                                    join s in signupData on a.AppointmentId equals s.SignupId into sa
+                                    from s in sa.DefaultIfEmpty()
+                                    select new JoinDataViewModel { appointmentVm = a, signupVm = s };
             return View("AllAppointments", JoinDataViewModel);
- 
         }
 
         public void insertDummyData()
         {
             signupData.Add(new Signup
             {
-               // SignupId = 1,
-                //GroupName = "Jamie's",
-                //GroupSize = 4,
+
+                SignupId = 6,
+                GroupName = "Jamie's",
+                GroupSize = 4,
 
             });
             appointmentData.Add(new Appointment
             {
-               // AppointmentId = 1,
-                //BeginTime = "2021-03-21 9:00:00",
+               AppointmentId = 1,
+                BeginTime = "2021-03-21 9:00:00",
                 //Duration = 1,
                 //Description = "sdigjsogn"
             });
         }
-        [HttpGet]
-        public IActionResult SignupForm()
-        {
-            return View();
-        }
+
 
         [HttpPost]
         public IActionResult SignupForm(Signup s, Appointment a)
@@ -99,13 +98,23 @@ namespace IS413Project1.Controllers
             //That required information is entered and validation model works
             if (ModelState.IsValid)
             {
-                context.Signups.Add(s);
-                Response.Redirect("AllAppointments");
-                return View();
+                context.Signups.Add(
+                    new Signup
+                    {
+                        GroupName = s.GroupName,
+                        GroupSize = s.GroupSize,
+                        Email = s.Email,
+                        Phone = s.Phone
+                    } );
+                context.SaveChanges();
+
+
+                Response.Redirect("Index");
+
+                return View("Index");
             }
-            else
-            {
-                return View();
+            else {
+                return View("Index");
             }
         }
 
