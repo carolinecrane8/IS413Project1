@@ -2,42 +2,6 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewBag.title = "Enter appointment information";
-    ViewBag.Time = "2021 - 03 - 21 8:00:00";
 }
-
-@model IS413Project1.Models.Signup
-    <! -- The form created for the user to enter a restaurant-->
-<form asp-action="SignUpForm" method="post">
-    <div>
-        <label asp-for="GroupName">Name of Group</label>
-        <input asp-for="GroupName" />
-    </div>
-
-    <div>
-        <label asp-for="GroupSize">Size of Group</label>
-        <input asp-for="GroupSize" />
-    </div>
-
-    <div>
-        <label asp-for="Email">Email Address</label>
-        <input asp-for="Email" />
-    </div>
-
-    <div>
-        <label asp-for="Phone">Phone Number</label>
-        <input asp-for="Phone" />
-    </div>
-
-    <div>
-        <label asp-for="BeginTime">Time</label>
-        <input asp-for="BeginTime" value="@ViewBag.Time"> //fix idiot
-    </div>
-
-    <! -- shows the errors -->
-
-    <div asp-validation-summary="All"></div>
-
-    <button type="submit">Submit your Information!</button>
-
-</form>
+<!--This will contain the form that people can use to sign up for an appointment. 
+    They shouln't be able to set appointment times or anything they should just be able to select them-->-->
