@@ -12,28 +12,40 @@
 </head>
 <body>
     <header>
-        <!--This is our nav bar here-->
-        <div class="bg-primary text-white p-2">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col navbar-brand text-left">LAYTON TEMPLE TOURS</div>
-                    <div class="col-6 text-right">
-                        <!--<vc:appt-summary />-->
-                    </div>
-                </div>
+        <!--This is our big, beautiful navbar-->
+        <nav class="navbar navbar-expand-xl navbar-dark bg-primary">
+            <a class="navbar-brand" asp-action="Index">LAYTON TEMPLE TOURS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Appointments
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-action="AllAppointments">View All</a>
+                            <a class="dropdown-item" asp-action="AvailAppointments">Available</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </nav>
     </header>
-    <!--Menu-->
+    <!--Render body-->
     <div class="row m-1 p-1">
-        <div id="categories" class="col-2">
-            Menu
-            <!--<vc:navigation-menu />-->
+        <div id="categories" class="col-1">
         </div>
         <div class="col-9" role="main">
             @RenderBody()
         </div>
     </div>
+    
     <!--Footer-->
     <footer class="border-top footer text-muted" style="margin-bottom:0">
         <div class="container">
