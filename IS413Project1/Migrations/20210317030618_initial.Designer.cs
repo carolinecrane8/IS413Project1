@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IS413Project1.Migrations
 {
     [DbContext(typeof(TempleDbContext))]
-    [Migration("20210316234901_initial")]
+    [Migration("20210317030618_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,9 @@ namespace IS413Project1.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Duration")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("SignupId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("AppointmentId");

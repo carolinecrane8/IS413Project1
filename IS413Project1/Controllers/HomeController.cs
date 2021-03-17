@@ -29,6 +29,9 @@ namespace IS413Project1.Controllers
         {
             return View();
         }
+
+
+        [HttpGet]
         public IActionResult AvailAppointments()
         {
             //Should be able to query and figure out where appointments == booked =true
@@ -37,9 +40,21 @@ namespace IS413Project1.Controllers
             return View(new AppointmentsListViewModel
             {
                Booked = context.Appointments
-                .Where(x => x.Booked == false)
+                .Where(x => x.SignupId == null)
             }
               );
+        }
+
+        [HttpPost]
+        public IActionResult AvailAppointments(int appointmentId)
+        {
+            Appointment appointment = context.Appointments.Where(a => a.AppointmentId == appointmentId).FirstOrDefault();
+            //Should be able to query and figure out where appointments == booked =true
+            //This is what I did before adding view model
+            ViewBag.Appointment = appointment;
+            //return View(context.Appointments);
+            return View("SignupForm");
+
         }
 
         public IActionResult AllAppointments()
@@ -50,6 +65,7 @@ namespace IS413Project1.Controllers
                 from s in sa.DefaultIfEmpty()
                 select new JoinDataViewModel { appointmentVm = a, signupVm = s };
                 return View("AllAppointments", JoinDataViewModel);
+ 
         }
 
         public void insertDummyData()
