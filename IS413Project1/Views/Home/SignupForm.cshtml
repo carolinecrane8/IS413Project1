@@ -4,7 +4,7 @@
 @{
 }
 <!--This will contain the form that people can use to sign up for an appointment.
-    They shouldn't be able to set appointment times or anything they should just be able to select them-->
+    They shouldn't be able to set appointment times or anything they should just be able to sign up for them-->
 <div class="form-group">
     <h1>Signup</h1>
     @model IS413Project1.Models.Signup
@@ -28,7 +28,7 @@
             <label asp-for="Phone" class="col-form-label">Phone Number</label>
             <input asp-for="Phone" class="form-control" type="tel" value="1-(555)-555-5555" />
         </div>
-
+        <input type="hidden" name="appointmentId" value="@ViewBag.Appointment.AppointmentId"/>
         <! -- shows the errors -->
 
         <div asp-validation-summary="All"></div>
