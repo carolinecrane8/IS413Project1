@@ -64,12 +64,12 @@ namespace IS413Project1.Controllers
             //IEnumerable<> 
             //appointmentData = context.Appointments.Where();
             //var whatever = context.Appointments
-            insertDummyData();
-            var JoinDataViewModel = from a in appointmentData
-                                    join s in signupData on a.AppointmentId equals s.SignupId into sa
-                                    from s in sa.DefaultIfEmpty()
-                                    select new JoinDataViewModel { appointmentVm = a, signupVm = s };
-            return View("AllAppointments", JoinDataViewModel);
+            //insertDummyData();
+            //var JoinDataViewModel = from a in appointmentData
+            //                        join s in signupData on a.AppointmentId equals s.SignupId into sa
+            //                        from s in sa.DefaultIfEmpty()
+            //                        select new JoinDataViewModel { appointmentVm = a, signupVm = s };
+            //return View("AllAppointments", JoinDataViewModel);
         }
 
         public void insertDummyData()
@@ -93,7 +93,7 @@ namespace IS413Project1.Controllers
 
 
         [HttpPost]
-        public IActionResult SignupForm(Signup s, Appointment a)
+        public IActionResult SignupForm(Signup s, int appointmentId)
         {
             //That required information is entered and validation model works
             if (ModelState.IsValid)
@@ -108,13 +108,18 @@ namespace IS413Project1.Controllers
                     } );
                 context.SaveChanges();
 
+                //This will set the variable most recent sign up to be equal to the signups object that has the highest ID which should make it work better.
+                var mostRecentSignUp = context.Signups.Max(s => s.SignupId);
 
-                Response.Redirect("Index");
+                var AssignedAppointment = context.Appointments.Where(x => x.AppointmentId == appointmentId).FirstOrDefault();
 
+                AssignedAppointment.AppointmentId = mostRecentSignUp;
+                
+                context.SaveChanges();
                 return View("Index");
             }
             else {
-                return View("Index");
+                return View("SignupForm");
             }
         }
 
