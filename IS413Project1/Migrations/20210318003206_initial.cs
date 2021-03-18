@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IS413Project1.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,6 +13,7 @@ namespace IS413Project1.Migrations
                 {
                     AppointmentId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Weekday = table.Column<string>(type: "TEXT", nullable: true),
                     SignupId = table.Column<int>(type: "INTEGER", nullable: true),
                     BeginTime = table.Column<string>(type: "smalldatetime", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false)

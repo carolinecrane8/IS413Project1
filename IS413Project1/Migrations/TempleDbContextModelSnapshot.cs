@@ -33,6 +33,9 @@ namespace IS413Project1.Migrations
                     b.Property<int?>("SignupId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Weekday")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("AppointmentId");
 
                     b.ToTable("Appointments");

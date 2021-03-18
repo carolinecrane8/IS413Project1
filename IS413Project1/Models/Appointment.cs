@@ -12,6 +12,9 @@ namespace IS413Project1.Models
         [Key]
         [Required]
         public int AppointmentId { get; set; }
+        
+        //This will update the day of the week: AKA Monday, tuesday, wednesday ...
+        public string Weekday { get; set; }
 
         public int? SignupId { get; set; }
 

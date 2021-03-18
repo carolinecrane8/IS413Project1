@@ -28,6 +28,7 @@ namespace IS413Project1.Models
                         AppointmentId = 1,
                         BeginTime = "2021-03-21 8:00:00",
                         Description = "Full Tour: Walk the perimeter of the site, sturdy shoes recommended.",
+                        Weekday = "Monday"
 
                     },
                     new Appointment
