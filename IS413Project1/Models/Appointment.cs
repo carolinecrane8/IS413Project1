@@ -14,7 +14,7 @@ namespace IS413Project1.Models
         public int AppointmentId { get; set; }
         
         //This will update the day of the week: AKA Monday, tuesday, wednesday ...
-        public string Weekday { get; set; }
+        public string? Weekday { get; set; }
 
         public int? SignupId { get; set; }
 
@@ -23,7 +23,7 @@ namespace IS413Project1.Models
         public string BeginTime { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
 
 

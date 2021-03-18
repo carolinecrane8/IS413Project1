@@ -9,6 +9,7 @@ namespace IS413Project1.Models
 {
     public class Signup
     {
+        [Key]
         [Required]
         public int SignupId { get; set; }
         
@@ -23,9 +24,9 @@ namespace IS413Project1.Models
         [RegularExpression(@"^\d{3}-\d{3}-\d{4}$", ErrorMessage = "Entered phone format is not valid. Correct format xxx-xxx-xxxx")]
         public string? Phone { get; set; }
 
-        [Required]
+        //set this to a string so that it will allow it to have null values and not throw an error: JK didn't do this
         [Column(TypeName = "smalldatetime")]
-        public DateTime BeginTime { get; set; }
+        public string? BeginTime { get; set; }
  
 
 

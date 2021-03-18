@@ -53,14 +53,20 @@ namespace IS413Project1.Controllers
             
             //Should be able to query and figure out where appointments == booked =true
             //This is what I did before adding view model
-            ViewBag.Appointment = appointment;
+            //ViewBag.Appointment = appointment;
             //return View(context.Appointments);
-            return View("SignupForm");
+            return RedirectToAction("SignupForm", new { appointmentId = appointmentId });
 
         }
 
         public IActionResult AllAppointments()
         {
+            return View(new AppointmentsListViewModel
+            {
+                Booked = context.Appointments
+               .Where(x => x.SignupId != null)
+            }
+             );
             //IEnumerable<> 
             //appointmentData = context.Appointments.Where();
             //var whatever = context.Appointments
@@ -69,58 +75,67 @@ namespace IS413Project1.Controllers
             //                        join s in signupData on a.AppointmentId equals s.SignupId into sa
             //                        from s in sa.DefaultIfEmpty()
             //                        select new JoinDataViewModel { appointmentVm = a, signupVm = s };
-            return View("AllAppointments");//, JoinDataViewModel);
+            //return View("AllAppointments");//, JoinDataViewModel);
         }
 
-        public void insertDummyData()
+        //public void insertDummyData()
+        //{
+        //    signupData.Add(new Signup
+        //    {
+
+        //        SignupId = 6,
+        //        GroupName = "Jamie's",
+        //        GroupSize = 4,
+
+        //    });
+        //    appointmentData.Add(new Appointment
+        //    {
+        //       AppointmentId = 1,
+        //        BeginTime = "2021-03-21 9:00:00",
+        //        //Duration = 1,
+        //        //Description = "sdigjsogn"
+        //    });
+        //}
+        [HttpGet]
+
+        public IActionResult SignupForm(int appointmentId)
         {
-            signupData.Add(new Signup
-            {
+            Appointment appointment = context.Appointments.Where(a => a.AppointmentId == appointmentId).FirstOrDefault();
 
-                SignupId = 6,
-                GroupName = "Jamie's",
-                GroupSize = 4,
+            ViewBag.Appointment = appointment;
 
-            });
-            appointmentData.Add(new Appointment
-            {
-               AppointmentId = 1,
-                BeginTime = "2021-03-21 9:00:00",
-                //Duration = 1,
-                //Description = "sdigjsogn"
-            });
+            return View();
         }
-
 
         [HttpPost]
         public IActionResult SignupForm(Signup s, int appointmentId)
         {
             //That required information is entered and validation model works
-            if (ModelState.IsValid)
-            {
-                context.Signups.Add(
-                    new Signup
-                    {
-                        GroupName = s.GroupName,
-                        GroupSize = s.GroupSize,
-                        Email = s.Email,
-                        Phone = s.Phone
-                    } );
-                context.SaveChanges();
+            //if (ModelState.IsValid)
+            //{
+            context.Signups.Add(s);
+            context.SaveChanges();
 
-                //This will set the variable most recent sign up to be equal to the signups object that has the highest ID which should make it work better.
-                var mostRecentSignUp = context.Signups.Max(s => s.SignupId);
+            //This will set the variable most recent sign up to be equal to the signups object that has the highest ID which should make it work better.
+            //var mostRecentSignUp = context.Signups.Select(s => s.SignupId).Max();
 
-                var AssignedAppointment = context.Appointments.Where(x => x.AppointmentId == appointmentId).FirstOrDefault();
 
-                AssignedAppointment.AppointmentId = mostRecentSignUp;
+            var AssignedAppointment = context.Appointments.Where(x => x.AppointmentId == appointmentId).FirstOrDefault();
+
+            AssignedAppointment.SignupId = s.SignupId;
+            //AssignedAppointment.BeginTime = context.Signups.Where(s => s.SignupId == mostRecentSignUp).FirstOrDefault().BeginTime;
                 
-                context.SaveChanges();
-                return View("Index");
-            }
-            else {
-                return View("SignupForm");
-            }
+            context.SaveChanges();
+            return View("Index");
+            //}
+            //else {
+            //    //ViewBag.Appointment = context.Appointments.Where(a => a.AppointmentId == appointmentId).FirstOrDefault();
+
+            //    //Should be able to query and figure out where appointments == booked =true
+            //    //This is what I did before adding view model
+            //    //return View(context.Appointments);
+            //    return View();
+            //}
         }
 
         public IActionResult Privacy()

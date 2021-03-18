@@ -47,7 +47,7 @@ namespace IS413Project1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("BeginTime")
+                    b.Property<string>("BeginTime")
                         .HasColumnType("smalldatetime");
 
                     b.Property<string>("Email")

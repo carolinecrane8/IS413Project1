@@ -11,6 +11,7 @@
     <! -- The form created for the user to enter a restaurant-->
     <p>@ViewBag.Appointment.BeginTime</p>
     <form asp-action="SignupForm" method="post" style="width: 20rem;">
+        <div asp-validation-summary="All"></div>
         <div class="form-group row">
             <label asp-for="GroupName" class="col-form-label">Group Name</label>
             <input asp-for="GroupName" type="text" class="form-control" placeholder="Enter group name" />
@@ -30,8 +31,8 @@
         </div>
 
         <! -- shows the errors -->
+        <input type="hidden" name="appointmentId" value="@ViewBag.Appointment.AppointmentId" />
 
-        <div asp-validation-summary="All"></div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

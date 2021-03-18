@@ -7,14 +7,56 @@
 @*@model IEnumerable<JoinDataViewModel>*@
 <!--SignUpPage: This will display the available times. Once they select a time they are routed to a form that has the date info set-->
 <!--This is an example of you can display all of the seed data-->
-
 @*@foreach (var item in Model)
-{
-    <div class="card card-outline-primary m-1 p-1">
-        <div class=“bg-faded p-1">
-            <h3>@item.appointmentVm.BeginTime</h3>
+    {
+        <div class="card card-outline-primary m-1 p-1">
+            <div class=“bg-faded p-1">
+                <h3>@item.appointmentVm.BeginTime</h3>
 
-            <p>@item.signupVm.GroupName</p>
+                <p>@item.signupVm.GroupName</p>
+            </div>
+        </div>*@
+}
+@model AppointmentsListViewModel
+<!--SignUpPage: This will display the available times. Once they select a time they are routed to a form that has the date info set-->
+<!--This is an example of you can display all of the seed data-->
+
+
+@foreach (var x in Model.Booked)
+{
+    @*<div class="card card-outline-primary m-1 p-1">
+            <div class=“bg-faded p-1">
+                <form method="post" asp-action="AvailAppointments">
+                    <input type="hidden" name="appointmentId" value="@x.AppointmentId" />
+                    <h3>@x.BeginTime</h3>
+                    <p>@x.Description</p>
+                    <button class="btn-primary" type="submit">Book Appointment</button>
+                </form>
+            </div>
+        </div>*@
+
+    <div class="container text-left">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title p-3">
+                        <a data-toggle="collapse" href="#@x.AppointmentId">@x.BeginTime</a>
+                    </h4>
+                </div>
+                <div id="@x.AppointmentId" class="collapse">
+                    <div class="panel-body">
+                        <p>Start Time: @x.BeginTime</p>
+                        <p>Description: @x.Description</p>
+                    </div>
+                    <form method="post" asp-action="AvailAppointments">
+                        <input type="hidden" name="appointmentId" value="@x.AppointmentId" />
+                        <span class="card-text p-1">
+                            <button class="btn-primary" type="submit">Book Appointment</button>
+                        </span>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>*@
+    </div>
+
 }
