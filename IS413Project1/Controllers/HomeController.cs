@@ -69,7 +69,7 @@ namespace IS413Project1.Controllers
             //                        join s in signupData on a.AppointmentId equals s.SignupId into sa
             //                        from s in sa.DefaultIfEmpty()
             //                        select new JoinDataViewModel { appointmentVm = a, signupVm = s };
-            //return View("AllAppointments", JoinDataViewModel);
+            return View("AllAppointments");//, JoinDataViewModel);
         }
 
         public void insertDummyData()
