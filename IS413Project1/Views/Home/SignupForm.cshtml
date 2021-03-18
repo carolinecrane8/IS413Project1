@@ -4,37 +4,36 @@
 @{
 }
 <!--This will contain the form that people can use to sign up for an appointment.
-    They shouln't be able to set appointment times or anything they should just be able to select them-->
-
-<h1>Signup</h1>
-@model IS413Project1.Models.Signup
+    They shouldn't be able to set appointment times or anything they should just be able to select them-->
+<div class="form-group">
+    <h1>Signup</h1>
+    @model IS413Project1.Models.Signup
     <! -- The form created for the user to enter a restaurant-->
-<p>@ViewBag.Appointment.BeginTime</p>
-<form asp-action="SignupForm" method="post">
-    <div>
-        <label asp-for="GroupName">Group Name</label>
-        <input asp-for="GroupName" />
-    </div>
+    <p>@ViewBag.Appointment.BeginTime</p>
+    <form asp-action="SignupForm" method="post" style="width: 20rem;">
+        <div class="form-group row">
+            <label asp-for="GroupName" class="col-form-label">Group Name</label>
+            <input asp-for="GroupName" type="text" class="form-control" placeholder="Enter group name" />
+            <small class="form-text text-muted">We'll call your group by this name when you arrive.</small>
+        </div>
+        <div class="form-group row">
+            <label asp-for="GroupSize" class="col-form-label">Number of people attending:</label>
+            <input asp-for="GroupSize" type="number" placeholder="1" />
+        </div>
+        <div class="form-group row">
+            <label asp-for="Email" class="col-form-label">Email address</label>
+            <input asp-for="Email" type="email" class="form-control" placeholder="name@example.com" />
+        </div>
+        <div class="form-group row">
+            <label asp-for="Phone" class="col-form-label">Phone Number</label>
+            <input asp-for="Phone" class="form-control" type="tel" value="1-(555)-555-5555" />
+        </div>
 
-    <div>
-        <label asp-for="GroupSize">Group Size</label>
-        <input asp-for="GroupSize" />
-    </div>
+        <! -- shows the errors -->
 
-    <div>
-        <label asp-for="Email">Email</label>
-        <input asp-for="Email" />
-    </div>
+        <div asp-validation-summary="All"></div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 
-    <div>
-        <label asp-for="Phone">Phone Number</label>
-        <input asp-for="Phone" />
-    </div>
 
-    <! -- shows the errors -->
-
-    <div asp-validation-summary="All"></div>
-
-    <button type="submit">Submit your Group Information</button>
-
-</form>
