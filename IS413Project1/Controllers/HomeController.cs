@@ -124,7 +124,7 @@ namespace IS413Project1.Controllers
 
             AssignedAppointment.SignupId = s.SignupId;
             //AssignedAppointment.BeginTime = context.Signups.Where(s => s.SignupId == mostRecentSignUp).FirstOrDefault().BeginTime;
-                
+            s.BeginTime = AssignedAppointment.BeginTime;
             context.SaveChanges();
             return View("Index");
             //}
