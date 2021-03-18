@@ -61,12 +61,8 @@ namespace IS413Project1.Controllers
 
         public IActionResult AllAppointments()
         {
-            return View(new AppointmentsListViewModel
-            {
-                Booked = context.Appointments
-               .Where(x => x.SignupId != null)
-            }
-             );
+            return View(context.Signups.Where(x => x.BeginTime != null));
+           
             //IEnumerable<> 
             //appointmentData = context.Appointments.Where();
             //var whatever = context.Appointments

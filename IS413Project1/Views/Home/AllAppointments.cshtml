@@ -17,12 +17,12 @@
             </div>
         </div>*@
 }
-@model AppointmentsListViewModel
+@model IEnumerable<IS413Project1.Models.Signup>
 <!--SignUpPage: This will display the available times. Once they select a time they are routed to a form that has the date info set-->
 <!--This is an example of you can display all of the seed data-->
 
 
-@foreach (var x in Model.Booked)
+@foreach (var x in Model)
 {
     @*<div class="card card-outline-primary m-1 p-1">
             <div class=“bg-faded p-1">
@@ -40,20 +40,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title p-3">
-                        <a data-toggle="collapse" href="#@x.AppointmentId">@x.BeginTime</a>
+                        <a data-toggle="collapse">@x.BeginTime:@x.GroupName</a>
                     </h4>
                 </div>
-                <div id="@x.AppointmentId" class="collapse">
+                <div id="@x.BeginTime" class="collapse">
                     <div class="panel-body">
-                        <p>Start Time: @x.BeginTime</p>
-                        <p>Description: @x.Description</p>
+                        <p>Start Time: @x.GroupName</p>
+                        @*<p>Description: @x.Description</p>*@
                     </div>
-                    <form method="post" asp-action="AvailAppointments">
-                        <input type="hidden" name="appointmentId" value="@x.AppointmentId" />
-                        <span class="card-text p-1">
-                            <button class="btn-primary" type="submit">Book Appointment</button>
-                        </span>
-                    </form>
                 </div>
             </div>
         </div>
