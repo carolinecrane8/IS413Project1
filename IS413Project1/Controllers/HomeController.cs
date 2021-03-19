@@ -12,12 +12,13 @@ namespace IS413Project1.Controllers
 {
     public class HomeController : Controller
     {
+        //This is the Home Controller
         //private readonly ILogger<HomeController> _logger;
         //private ITempleRepository _repository;
 
         //These will help to join the tables to output all in info
-        List<Appointment> appointmentData = new List<Appointment>();
-        List<Signup> signupData = new List<Signup>();
+        //List<Appointment> appointmentData = new List<Appointment>();
+        //List<Signup> signupData = new List<Signup>();
 
         private TempleDbContext context { get; set; }
         public HomeController(TempleDbContext con)
@@ -53,8 +54,7 @@ namespace IS413Project1.Controllers
             
             //Should be able to query and figure out where appointments == booked =true
             //This is what I did before adding view model
-            //ViewBag.Appointment = appointment;
-            //return View(context.Appointments);
+
             return RedirectToAction("SignupForm", new { appointmentId = appointmentId });
 
         }
@@ -63,39 +63,14 @@ namespace IS413Project1.Controllers
         {
             return View(context.Signups.Where(x => x.BeginTime != null));
            
-            //IEnumerable<> 
-            //appointmentData = context.Appointments.Where();
-            //var whatever = context.Appointments
-            //insertDummyData();
-            //var JoinDataViewModel = from a in appointmentData
-            //                        join s in signupData on a.AppointmentId equals s.SignupId into sa
-            //                        from s in sa.DefaultIfEmpty()
-            //                        select new JoinDataViewModel { appointmentVm = a, signupVm = s };
-            //return View("AllAppointments");//, JoinDataViewModel);
         }
 
-        //public void insertDummyData()
-        //{
-        //    signupData.Add(new Signup
-        //    {
-
-        //        SignupId = 6,
-        //        GroupName = "Jamie's",
-        //        GroupSize = 4,
-
-        //    });
-        //    appointmentData.Add(new Appointment
-        //    {
-        //       AppointmentId = 1,
-        //        BeginTime = "2021-03-21 9:00:00",
-        //        //Duration = 1,
-        //        //Description = "sdigjsogn"
-        //    });
-        //}
+       
         [HttpGet]
 
         public IActionResult SignupForm(int appointmentId)
         {
+            //This is passing the appointment Id so that we can link the two models
             Appointment appointment = context.Appointments.Where(a => a.AppointmentId == appointmentId).FirstOrDefault();
 
             ViewBag.Appointment = appointment;
@@ -106,16 +81,11 @@ namespace IS413Project1.Controllers
         [HttpPost]
         public IActionResult SignupForm(Signup s, int appointmentId)
         {
-            //That required information is entered and validation model works
-            //if (ModelState.IsValid)
-            //{
+            //Update the database
             context.Signups.Add(s);
             context.SaveChanges();
 
-            //This will set the variable most recent sign up to be equal to the signups object that has the highest ID which should make it work better.
-            //var mostRecentSignUp = context.Signups.Select(s => s.SignupId).Max();
-
-
+            //This is grabbing where the context.appointments is equal to the ID so that we can assign the info
             var AssignedAppointment = context.Appointments.Where(x => x.AppointmentId == appointmentId).FirstOrDefault();
 
             AssignedAppointment.SignupId = s.SignupId;
@@ -124,15 +94,6 @@ namespace IS413Project1.Controllers
                 
             context.SaveChanges();
             return View("Index");
-            //}
-            //else {
-            //    //ViewBag.Appointment = context.Appointments.Where(a => a.AppointmentId == appointmentId).FirstOrDefault();
-
-            //    //Should be able to query and figure out where appointments == booked =true
-            //    //This is what I did before adding view model
-            //    //return View(context.Appointments);
-            //    return View();
-            //}
         }
 
         public IActionResult Privacy()
