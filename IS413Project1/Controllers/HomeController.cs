@@ -119,6 +119,7 @@ namespace IS413Project1.Controllers
             var AssignedAppointment = context.Appointments.Where(x => x.AppointmentId == appointmentId).FirstOrDefault();
 
             AssignedAppointment.SignupId = s.SignupId;
+            s.BeginTime = AssignedAppointment.BeginTime;
             //AssignedAppointment.BeginTime = context.Signups.Where(s => s.SignupId == mostRecentSignUp).FirstOrDefault().BeginTime;
                 
             context.SaveChanges();
