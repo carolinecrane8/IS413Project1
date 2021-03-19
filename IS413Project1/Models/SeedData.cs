@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+//this is just some temporary stuff
 namespace IS413Project1.Models
 {
     public class SeedData

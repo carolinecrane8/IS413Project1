@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+//here is where we have alot of the default settings come up, adding db context and adding connection strings.
 namespace IS413Project1
 {
     public class Startup

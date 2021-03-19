@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+//here we do important things like idk... start the program!!
 namespace IS413Project1
 {
     public class Program

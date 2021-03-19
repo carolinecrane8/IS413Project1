@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-
+//this model is used to show available appointments
 namespace IS413Project1.Models
 {
     public class Appointment
