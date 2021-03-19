@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-
+//this is the model where we will create the attributes for the sign up form
 namespace IS413Project1.Models
 {
     public class Signup
